@@ -1,5 +1,6 @@
 #library needed packages
 library(tidyverse)
+library(readxl)
 
 #import excel spreadsheet
 production <- read_excel("C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/EthanolProduction/Prod_dataset.xlsx")
@@ -34,9 +35,5 @@ summary(production5$year)
 table(production5$state_abb)
 summary(production5$eth.production)
 
-#drop D.C. observations
-production6 = production5 |> 
-  filter(state_abb != "DC")
-
 #save data in r format
-saveRDS(production6, "C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/EthanolProduction/clean.ethanolproduction.rds")
+saveRDS(production5, "C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/EthanolProduction/clean.ethanolproduction.rds")
