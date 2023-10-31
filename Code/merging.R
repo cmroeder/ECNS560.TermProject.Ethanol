@@ -17,4 +17,4 @@ mega |>
   filter(n>1)
 
 #save merged data
-saveRDS(mega, "C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/merged.rds")
+saveRDS(mega, "C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/Merging/corn.eth.merged.rds")
