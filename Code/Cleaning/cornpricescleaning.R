@@ -6,7 +6,7 @@ prices = readRDS("C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.E
 
 #drop unneeded columns
 prices1 = prices |> 
-  select(state_alpha, year, Value)
+  dplyr::select(state_alpha, year, Value)
 
 #rename variables
 prices2 = prices1 |> 
@@ -33,6 +33,12 @@ prices4 |>
 
 #check for any miscellaneous categories in state column like OT (other)
 table(prices4$state_abb)
+
+#check for missing and extreme values
+skim(prices4$corn.prices)
+
+prices4 |> 
+  filter(is.na(corn.prices))
 
 #check range of values
 summary(prices4$corn.prices)

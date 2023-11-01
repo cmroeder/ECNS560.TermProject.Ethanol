@@ -44,7 +44,7 @@ ethprodbar
 
 #use patchwork to compile barcharts into one plot
 drivers = ((e85bar|legbar)/(cornprodbar|ethprodbar)) +
-  plot_annotation(tag_levels = "A", title = "Vizualizing Relationship between Count of E85 Stations and Variables of Interest")
+  plot_annotation(tag_levels = "A", title = "Visualizing Relationship between Count of E85 Stations and Variables of Interest")
 drivers
 
 #save plot
