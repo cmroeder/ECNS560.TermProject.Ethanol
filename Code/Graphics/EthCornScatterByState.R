@@ -14,11 +14,13 @@ summary(mega$eth.production)
 
 #make plot
 scatter = mega |>
+  mutate(eth.production = eth.production/1000,
+         corn.production = corn.production/1000000) |> 
   filter(eth.production > 0) |> 
   ggplot(aes(x = corn.production, y = eth.production, color = state)) +
   geom_point(size = 2) +
-  labs(x = "Corn Production",
-       y = "Ethanol Production",
+  labs(x = "Corn Production (1 million bushels)",
+       y = "Ethanol Production (1 million barrels)",
        title = "States Producing Ethanol: Ethanol on Corn Production")
 scatter
 

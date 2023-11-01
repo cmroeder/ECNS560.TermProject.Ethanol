@@ -1,6 +1,7 @@
 #library needed pacakges
 library(tidyverse)
 library(stringr)
+library(skimr)
 
 #import dirty corn prices
 production = readRDS("C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/CornProduction/dirtycornproduction.rds")
@@ -11,7 +12,7 @@ production1 = production |>
 
 #drop unneeded columns
 production2 = production1 |> 
-  select(state_alpha, year, Value)
+  dplyr::select(state_alpha, year, Value)
 
 #rename variables
 production3 = production2 |> 
@@ -40,6 +41,9 @@ table(production5$state_abb)
 
 production6 = production5 |> 
   filter(state_abb != "OT")
+
+#check for missing and extreme values
+skim(production6$corn.production)
 
 #check range of values
 summary(production6$corn.production)

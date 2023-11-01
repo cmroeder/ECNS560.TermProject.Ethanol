@@ -1,0 +1,82 @@
+---
+title: "Draft Exploratory Analysis"
+author: "Caroline Roeder and Indira Aitkulova"
+date: "2023-11-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Topic:
+
+What is the relationship between ethanol demand and state-level legislation?
+
+### Motivation:
+
+Ethanol is a good source of clean energy. Incorporating it into gasoline allows for cleaner vehicle fuel sources. Moreover, ethanol is produced domestically from domestically grown crops, reducing U.S. dependence on foreign oil and increasing the nation's energy independence. Therefore, derived from domestically cultivated crops, ethanol not only promotes environmental responsibility but also strengthens the US nation's energy independence by reducing dependency on international sources.
+
+Since the 1990s, state and federal governments enacted more than 300 laws incentivizing a market for ethanol. In this study we will specifically focus on state-level legislation. While federal legislation is likely related to changes in ethanol demand across all states, focusing on state-level legislation will allow us to consider how differential policies to promote ethanol production and use are related to differential changes in ethanol demand in individual states.
+
+In order to investigate the relationship, we choose the number of E85 stations available as a proxy for ethanol demand. The term E85 specifically denotes a blend containing 85% ethanol and 15% gasoline or other hydrocarbon, measured by volume. This blend represents the highest ethanol concentration commonly used in vehicles today. Other fuel blends, E10 and E15, can be run in most engine types. These fuel blends, requiring smaller shares of ethanol, are commonly required by legislation whereas E85 is not required. Not all vehicles can use E85 fuel, so consumers purchasing E85 fuel make an active decision to operate a vehicle which can use E85 and then purchase E85 fuel. For these reasons, we assume the number of E85 stations approximates ethanol demand. If legislation increased the number of E85 stations, consumer demand may have been driven by increased availability. Or, conversely, consumers with a high demand for E85 fuel may have lobbied for state-level legislation increasing the number of E85 stations. Therefore, this project aims to investigate the relationship between the number of E85 stations and state-level legislation.
+
+### Research questions:
+
+The project aims to answer the following research questions:
+
+1.  What is the distribution of E85 stations across all states and time? (Descriptive)
+
+2.  How does total and kind of legislation change over time? (Descriptive)
+
+3.  How is ethanol production related to corn production? (Descriptive)
+
+4.  What is the distribution of E85 stations, legislation, and ethanol production across all states? (Descriptive)
+
+5.  How might the number of E85 stations, legislation, ethanol production, and corn production be related across time? (Descriptive)
+
+6.  What type of legislation is associated with greater increases in E85 stations? (Descriptive)
+
+7.  Are state-level laws and ethanol production good predictors of ethanol demand? (Predictive)
+
+Questions one through four will be answered through this Exploratory Analysis while questions 5 and 6 will be focused on in the forthcoming Econometric Analysis.
+
+### Description of data:
+
+For this project we use data from five main sources:
+
+| Data Set Name                     | Variables                                                                          | Time Span | Geographical Coverage | URL                                                                                   |
+|-----------------------------------|------------------------------------------------------------------------------------|-----------|-----------------------|---------------------------------------------------------------------------------------|
+| Ethanol Production                | Ethanol production in thousands of barrels per year                                | 1960-2021 | Nation-wide by state  | [Dataset 1](https://www.eia.gov/state/seds/seds-data-complete.php?sid=US##Production) |
+| Corn Production Volume            | Corn production in bushels by year                                                 | 1866-2023 | Nation-wide by state  | [Dataset 2](https://quickstats.nass.usda.gov/)                                        |
+| Corn Prices                       | Corn price received in USD/bushel by year                                          | 1867-2023 | Nation-wide by state  | [Dataset 3](https://quickstats.nass.usda.gov/)                                        |
+| E85 Stations                      | Number of available E85 station counts by state and year                           | 2007-2022 | Nation-wide by state  | [Dataset 4](https://afdc.energy.gov/stations/states)                                  |
+| E85 Stations Laws and Regulations | Description of each law and regulation related to E85 fuel across states and years | 1990-2021 | Nation-wide by state  | [Dataset 5](https://afdc.energy.gov/data_download/)                                   |
+
+The data set on ethanol production is sourced from the US Energy Information Administration, while the data on corn production and corn prices are obtained from the United States Department of Agriculture. The data sets related to E85 are supplied by the US Department of Energy. The time-span we will cover is from 2007 to 2021.
+
+The first four data sets in the table above are organized such that every row corresponds to a specific state-year combination and include the relevant variables of interest. The legislation data set is structured such that every row corresponds to individual legislation. It is modified so that the final data set contains "state-year" combinations of laws enacted in the specified year as well as active taxes, incentives, and regulations in that year.  All data sets are merged on "state-year" unique combinations. Each row in the final merged file corresponds to "state-year" combination and contains information on ethanol (in thousands of barrels), corn production (in bushels), corn prices in USD per bushel, number of E85 stations, number of enacted legislation,  and number of active taxes, incentives, and regulations.
+
+# Finding 1
+
+![](Exploratory_Output/e85_overtime_graph.png)
+
+![](Exploratory_Output/e85_overtime_map.png)
+
+# Finding 2
+
+![](Exploratory_Output/StackedTotalLeg.png)
+
+# Finding 3
+
+![](Exploratory_Output/EthCornScatterByState.png)
+
+# Finding 4
+
+![](Exploratory_Output/ethanol_production_e85.png)
+
+![](Exploratory_Output/e85_legislations_map.png)
+
+# Finding 5
+
+![](Exploratory_Output/E85Relationships.png)
