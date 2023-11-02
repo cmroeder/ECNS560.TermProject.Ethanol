@@ -25,4 +25,4 @@ scatter = mega |>
 scatter
 
 #save plot as png
-ggsave("Exploratory_Output/EthCornScatterByState.png", scatter, "png")
+ggsave("Outputs/Exploratory_Analysis/EthCornScatterByState.png", scatter, "png")

@@ -4,7 +4,7 @@ library(readxl)
 library(skimr)
 
 #import excel spreadsheet
-production <- read_excel("C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/EthanolProduction/Prod_dataset.xlsx")
+production <- read_excel("Data/Cleaning/Prod_dataset.xlsx")
 
 #the msn code ENPRP represents ethanol production - filter for that
 production1 = production |> 
@@ -44,4 +44,4 @@ table(production5$state_abb)
 summary(production5$eth.production)
 
 #save data in r format
-saveRDS(production5, "C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/EthanolProduction/clean.ethanolproduction.rds")
+saveRDS(production5, "Data/Cleaning/clean.ethanolproduction.rds")

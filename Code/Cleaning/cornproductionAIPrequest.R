@@ -26,4 +26,4 @@ json = response |>
 cornproduction = as_tibble(json$data)
 cornproduction
 
-saveRDS(cornproduction, "Data/CornProduction/dirtycornproduction.rds")
+saveRDS(cornproduction, "Data/Cleaning/dirtycornproduction.rds")

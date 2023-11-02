@@ -2,7 +2,7 @@
 library(tidyverse)
 
 #import dirty corn prices
-prices = readRDS("C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/CornPrices/dirtycornprices.rds")
+prices = readRDS("Data/Cleaning/dirtycornprices.rds")
 
 #drop unneeded columns
 prices1 = prices |> 
@@ -49,4 +49,4 @@ prices5 = prices4 |>
   filter(year != 2022)
 
 #save
-saveRDS(prices5,"C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/CornPrices/cleancornprices.rds")
+saveRDS(prices5,"Data/Cleaning/cleancornprices.rds")

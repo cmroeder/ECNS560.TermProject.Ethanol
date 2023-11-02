@@ -4,7 +4,7 @@ library(stringr)
 library(skimr)
 
 #import dirty corn prices
-production = readRDS("C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/CornProduction/dirtycornproduction.rds")
+production = readRDS("Data/Cleaning/dirtycornproduction.rds")
 
 #select only year values not forecasted values
 production1 = production |> 
@@ -54,4 +54,4 @@ production7 = production6 |>
   filter(year != 2022, year != 2023)
 
 #save
-saveRDS(production7,"C:/Users/cmeta/OneDrive/Documents/GitHub/ECNS561.TermProject.Ethanol/Data/CornProduction/cleancornproduction.rds")
+saveRDS(production7,"Data/Cleaning/cleancornproduction.rds")

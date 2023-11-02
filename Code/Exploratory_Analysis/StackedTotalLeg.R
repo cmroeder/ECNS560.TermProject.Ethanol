@@ -55,4 +55,4 @@ stacked = long |>
 stacked
 
 #save plot
-ggsave("Exploratory_Output/StackedTotalLeg.png", stacked, "png")
+ggsave("Outputs/Exploratory_Analysis/StackedTotalLeg.png", stacked, "png")

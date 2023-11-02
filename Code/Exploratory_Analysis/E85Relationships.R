@@ -48,4 +48,4 @@ drivers = ((e85bar|legbar)/(cornprodbar|ethprodbar)) +
 drivers
 
 #save plot
-ggsave("Exploratory_Output/E85Relationships.png", drivers, "png")
+ggsave("Outputs/Exploratory_Analysis/E85Relationships.png", drivers, "png")

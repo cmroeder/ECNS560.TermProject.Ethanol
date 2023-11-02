@@ -218,7 +218,7 @@ ggplot() +
   theme_minimal() +
   scale_color_manual(values = c("red", "green", "blue", "orange", "purple", "gray", "pink", "brown", "cyan", "magenta"))
 #merging with corn 
-file_path = "C:/Users/aitku/OneDrive/Рабочий стол/Fall 2023/Advanced_Data_Analysis/Project/data/clean.ethanolproduction.rds"
+file_path = "Data/Merging/merged.eth.corn.rds"
 merged_corn = readRDS(file_path)
 #merging everything with E85
 e_85_merged <- e_85_merged %>%
