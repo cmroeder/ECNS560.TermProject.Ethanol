@@ -6,7 +6,7 @@ library(tidyverse)
 library(gridExtra)
 
 #reading data
-merge_final=read.csv("C:/Users/aitku/OneDrive/Рабочий стол/Fall 2023/Advanced_Data_Analysis/GitHub/ECNS560.TermProject.Ethanol/Data/Merging/merge_final.csv")
+merge_final=read.csv("Data/Merging/merge_final.csv")
 top_states <- merge_final %>%
   group_by(state_abb) %>%
   summarise(total_e85_stations = sum(e85, na.rm = TRUE)) %>%
@@ -73,7 +73,7 @@ graph2
 
 # Combine graphs vertically with equal heights
 combined_graph <- grid.arrange(graph1, graph2, ncol = 1, heights = c(3, 2))
-ggsave("C:/Users/aitku/OneDrive/Рабочий стол/Fall 2023/Advanced_Data_Analysis/GitHub/ECNS560.TermProject.Ethanol/Exploratory_Output/e85_overtime_graph.png", 
+ggsave("Output/Exploratory_Analysis/e85_overtime_graph.png", 
        combined_graph, 
        width = 8, 
        height = 10,  # Set the height explicitly to ensure equal heights for both graphs
