@@ -73,7 +73,7 @@ combined_maps <- cowplot::plot_grid(map_2007, map_2014, map_2021, ncol = 1)
 
 # Combined title
 combined_title <- ggdraw() +
-  draw_label("E85 stations distribution in 2007, 2014, and 2021", x = 0.5, y = 0.98, size = 12)
+  draw_label("E85 stations distribution in 2007, 2014, and 2021", x = 0.5, y = 0.75, size = 12)
 
 # Plotting the combined maps with the combined title
 combined_maps=cowplot::plot_grid(combined_title, combined_maps, ncol = 1, rel_heights = c(0.1, 1))
