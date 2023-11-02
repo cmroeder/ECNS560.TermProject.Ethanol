@@ -42,7 +42,7 @@ map_plot2 <- ggplot() +
       coord_fixed(ratio = 1.3)
 
 map_plot2
-ggsave("Output/Exploratory_Analysis/ethanol_production_e85.png", map_plot2, width = 12, height = 10, units = "in", dpi = 300)
+ggsave("Outputs/Exploratory_Analysis/ethanol_production_e85.png", map_plot2, width = 12, height = 10, units = "in", dpi = 300)
 
 #east cost states
 east_states<- c("connecticut", "delaware", "maine", "maryland", 
@@ -69,5 +69,5 @@ map_plot3 <- ggplot() +
   ) +
   coord_fixed(ratio = 1.3)
 map_plot3
-ggsave("Output/Exploratory_Analysis/e85_legislations_map_east_coast.png", map_plot3, width = 8, height = 6, units = "in", dpi = 300)
+ggsave("Outputs/Exploratory_Analysis/e85_legislations_map_east_coast.png", map_plot3, width = 8, height = 6, units = "in", dpi = 300)
 

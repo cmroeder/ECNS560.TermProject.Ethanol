@@ -48,10 +48,10 @@ map_plot2=ggplot() +
   labs(fill = "Number of E85 Stations", size = "Number of Regulations") +
   ggtitle("E85 stations (2021) and enacted state-level legislations (2007-2021)") +
   theme_void()+
-  theme(plot.title = element_text(size = 12, margin = margin(10, 0, 20, 0))) +
+  theme(plot.title = element_text(size = 14, margin = margin(10, 0, 20, 0))) +
   coord_fixed(ratio = 1.3)
 map_plot2
-ggsave("Output/Exploratory_Analysis/e85_legislations_map.png", map_plot2, width = 8, height = 6, units = "in", dpi = 300)
+ggsave("Outputs/Exploratory_Analysis/e85_legislations_map.png", map_plot2, width = 8, height = 6, units = "in", dpi = 300)
 
 #east cost states
 east_states<- c("connecticut", "delaware", "maine", "maryland", 
@@ -75,5 +75,5 @@ map_plot3=ggplot() +
   theme(plot.title = element_text(size = 10, margin = margin(10, 0, 20, 0))) +
   coord_fixed(ratio = 1.3)
 map_plot3
-ggsave("Output/Exploratory_Analysis/e85_legislations_map_east_coast.png", map_plot3, width = 8, height = 6, units = "in", dpi = 300)
+ggsave("Outputs/Exploratory_Analysis/e85_legislations_map_east_coast.png", map_plot3, width = 8, height = 6, units = "in", dpi = 300)
 

@@ -73,7 +73,7 @@ graph2
 
 # Combine graphs vertically with equal heights
 combined_graph <- grid.arrange(graph1, graph2, ncol = 1, heights = c(3, 2))
-ggsave("Output/Exploratory_Analysis/e85_overtime_graph.png", 
+ggsave("Outputs/Exploratory_Analysis/e85_overtime_graph.png", 
        combined_graph, 
        width = 8, 
        height = 10,  # Set the height explicitly to ensure equal heights for both graphs

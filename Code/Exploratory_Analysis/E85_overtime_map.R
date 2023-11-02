@@ -78,4 +78,4 @@ combined_title <- ggdraw() +
 # Plotting the combined maps with the combined title
 combined_maps=cowplot::plot_grid(combined_title, combined_maps, ncol = 1, rel_heights = c(0.1, 1))
 
-ggsave("Output/Exploratory_Analysis/e85_overtime_map.png", combined_maps, width = 8, height = 6, units = "in", dpi = 300)
+ggsave("Outputs/Exploratory_Analysis/e85_overtime_map.png", combined_maps, width = 8, height = 6, units = "in", dpi = 300)
