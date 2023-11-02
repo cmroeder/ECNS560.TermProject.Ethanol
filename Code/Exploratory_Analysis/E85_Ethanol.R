@@ -38,11 +38,8 @@ map_plot2 <- ggplot() +
   labs(fill = bquote("Ethanol production (k barrels)\n(grey for NA)"), size = "Number of E85 Stations") +
   ggtitle("E85 stations and Ethanol production (2021)") +
   theme_void() +
-  theme(
-    plot.title = element_text(size = 14, margin = margin(10, 0, 0, 0)),
-    legend.text = element_text(size = 8)  # Adjust the legend text size here
-  ) +
-  coord_fixed(ratio = 1)
+    theme(plot.title = element_text(size = 12, margin = margin(10, 0, 20, 0))) +
+      coord_fixed(ratio = 1.3)
 
 map_plot2
 ggsave("Output/Exploratory_Analysis/ethanol_production_e85.png", map_plot2, width = 12, height = 10, units = "in", dpi = 300)
