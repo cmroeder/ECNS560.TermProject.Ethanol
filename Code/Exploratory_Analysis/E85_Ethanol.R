@@ -8,7 +8,7 @@ merge_final=read.csv("Data/Merging/merge_final.csv")
 #creating df with total e85 and ethanol production
 df <- merge_final %>%
   mutate(state = str_to_lower(state)) %>%
-  filter(year == 2021, state != "total") %>%
+  filter(year == 2019, state != "total") %>%
   select(state, e85, eth.production)
 
 # Get the map data for all states, excluding Alaska and Hawaii
@@ -32,10 +32,10 @@ dot_data=dot_data|>
 map_plot2 <- ggplot() +
   geom_map(data = merged_data1, aes(map_id = region, x = long, y = lat, fill = eth.production), 
            map = merged_data1, color = "black") +
-  scale_fill_gradient(low = "white", high = "purple", na.value = "lightgrey", guide = "legend") +
+  scale_fill_gradient(low = "white", high = "purple", na.value = "white", guide = "legend") +
   geom_point(data = dot_data, aes(x = long, y = lat, size = e85), color = "cadetblue3", alpha = 0.7) +
   geom_text(data = dot_data, aes(x = long, y = lat, label = e85), size = 3, color = "black") +
-  labs(fill = bquote("Ethanol production (k barrels)\n(grey for NA)"), size = "Number of E85 Stations") +
+  labs(fill = bquote("Ethanol production (k barrels)"), size = "Number of E85 Stations") +
   ggtitle("E85 stations and Ethanol production (2021)") +
   theme_void() +
   theme(plot.title = element_text(size = 14, margin = margin(10, 0, 20, 0))) +

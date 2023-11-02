@@ -117,11 +117,10 @@ Ethanol production is clearly higher in states which have larger corn production
 
 ### Finding 4
 
-![](images/ethanol_production_e85-01.png){style="display: block; margin: 1em auto" width="600"}
+![](images/e85_legislations_map-04.png){style="display: block; margin: 1em auto" width="600"}
 
 This first map illustrates the distribution of E85 stations across the US in 2021, with gray dots representing the number of laws enacted between 2007 and 2021 in each state. Larger dots indicate a higher number of legislations, while darker shades signify a greater number of E85 stations. The pattern reveals that states with fewer legislations (ranging from 0 to 2) tend to have fewer E85 stations. However, the relationship becomes less clear in states with higher numbers of incentives and regulations. For instance, both Nevada and California have enacted 3 legislations, yet the number of E85 stations in these states varies significantly.
-
-![](images/e85_legislations_map-04.png){style="display: block; margin: 1em auto" width="600"}
+![](images/ethanol_production_e85.png){style="display: block; margin: 1em auto" width="600"}
 
 This second map illustrates distribution of ethanol production across the US in 2021 with blue dots representing the number of E85 stations available in each state in 2021. Larger dots indicate a higher number of E85 stations, while darker shades signify a greater amount of ethanol produced. We do not see a clear relationship between the number of E85 stations and ethanol produced with high producing states like Iowa and Illinois having significantly different numbers of E85 stations available.
 
