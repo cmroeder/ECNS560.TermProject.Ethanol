@@ -5,7 +5,7 @@ library(tidyverse)
 library(naniar)
 library(dplyr)
 
-file_path = "C:/Users/aitku/OneDrive/Рабочий стол/Fall 2023/Advanced_Data_Analysis/Project/data/laws_and_incentives (Oct 24 2023).csv"
+file_path = "Data/Raw/laws_and_incentives (Oct 24 2023).csv"
 laws = read.csv(file_path)
 #filling missing data with NA
 law1 <- laws %>%
@@ -141,7 +141,7 @@ regulations_laws_final <- expanded_laws_reg %>%
   select(State, Year, enacted, incentives, tax_incentives, grant_incentives, 
          other_incentives, regulations) |>
   distinct()
-write.csv(regulations_laws_final, "C:/Users/aitku/OneDrive/Рабочий стол/Fall 2023/Advanced_Data_Analysis/Project/data/regulations_laws_final.csv")
+write.csv(regulations_laws_final, "Data/Cleaning/regulations_laws_final.csv")
 
 ##trial merge
 #abbr
