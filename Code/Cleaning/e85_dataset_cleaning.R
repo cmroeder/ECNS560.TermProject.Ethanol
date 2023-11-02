@@ -3,7 +3,7 @@ library(readxl)
 library(dplyr)
 library(dplyr)
 #path to file
-excel_file <- "C:/Users/aitku/OneDrive/Рабочий стол/Fall 2023/Advanced_Data_Analysis/Project/data/historical-station-counts.xlsx"
+excel_file <- "Data/Raw/historical-station-counts.xlsx"
 
 #list of all years because sheets are named after years
 sheet_names <- as.character(seq(2007, 2019, by = 1))
@@ -43,4 +43,4 @@ colnames(years_2020_2022) <- c("state", "year", "e85", "total")
 e85_df <- rbind(years_2009_2019, years_2020_2022)
 #saving the df
 e85_df$ratio_e85=e85_df$e85/e85_df$total*100
-write.csv(e85_df, "C:/Users/aitku/OneDrive/Рабочий стол/Fall 2023/Advanced_Data_Analysis/Project/data/e_85.csv")
+write.csv(e85_df, "Data/Cleaning/e_85.csv")
