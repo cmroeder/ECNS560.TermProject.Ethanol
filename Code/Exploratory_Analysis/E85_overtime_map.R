@@ -11,7 +11,7 @@ library(stringr)
 us_map <- map_data("state")
 
 #reading data
-merge_final=read.csv("C:/Users/aitku/OneDrive/Рабочий стол/Fall 2023/Advanced_Data_Analysis/GitHub/ECNS560.TermProject.Ethanol/Data/Merging/merge_final.csv")
+merge_final=read.csv("Data/Merging/merge_final.csv")
 
 # Filter data for 2007
 df_2007 <- merge_final %>%
@@ -78,4 +78,4 @@ combined_title <- ggdraw() +
 # Plotting the combined maps with the combined title
 combined_maps=cowplot::plot_grid(combined_title, combined_maps, ncol = 1, rel_heights = c(0.1, 1))
 
-ggsave("C:/Users/aitku/OneDrive/Рабочий стол/Fall 2023/Advanced_Data_Analysis/GitHub/ECNS560.TermProject.Ethanol/Exploratory_Output/e85_overtime_map.png", combined_maps, width = 8, height = 6, units = "in", dpi = 300)
+ggsave("Output/Exploratory_Analysis/e85_overtime_map.png", combined_maps, width = 8, height = 6, units = "in", dpi = 300)
