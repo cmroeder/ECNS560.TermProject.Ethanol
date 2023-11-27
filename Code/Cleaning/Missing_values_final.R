@@ -4,14 +4,14 @@ library(stringr)
 library(tidyr)
 library(dplyr)
 #reading data
-merge_final=read.csv("Data/Merging/merge_final.csv")
+merge_final=read.csv("Data/Merging/merge_final_copy.csv")
 #missing values
 missing_table <- data.frame(
   Column = names(merge_final),
   Missing_Values = sapply(merge_final, function(x) sum(is.na(x)))
 )
 print(missing_table)
-#we have 230 missing values for eth.production and 331 missing values for 
+#we have 51 missing values for eth.production and 201 missing values for 
 #corn production and corn prices
 #ETH PRODUCTION MISSING
 missing_eth <- merge_final[is.na(merge_final$eth.production), ]
@@ -105,4 +105,4 @@ while (sum(is.na(merge_final$corn.prices)) > 0) {
   merge_final$corn.prices <- custom_impute3(merge_final$corn.prices, merge_final$year, merge_final$state, k = 3)
 }
 
-write.csv(merge_final, "Data/Merging/merge_final_final.csv")
+write.csv(merge_final, "Data/Merging/merge_final_final1.csv")

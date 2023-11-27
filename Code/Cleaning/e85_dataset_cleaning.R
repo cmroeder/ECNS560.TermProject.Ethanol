@@ -3,7 +3,7 @@ library(readxl)
 library(dplyr)
 library(dplyr)
 #path to file
-excel_file <- "Data/Raw/historical-station-counts.xlsx"
+excel_file <- "Data/Raw/historical-station-counts1.xlsx"
 
 #list of all years because sheets are named after years
 sheet_names <- as.character(seq(2007, 2019, by = 1))
@@ -15,7 +15,6 @@ all_data <- lapply(sheet_names, function(sheet) {
   data$year <- sheet  # Add 'year' column with sheet name
   return(data)
 })
-
 # Vertically concatenate all data frames into one
 combined_data <- bind_rows(all_data)
 
