@@ -4,7 +4,7 @@ library(stringr)
 library(tidyr)
 library(dplyr)
 library(readxl)
-merge_final=read.csv("Data/Merging/merge_final_final.csv")
+merge_final=read.csv("Data/Merging/merge_final_final1.csv")
 #importing first set of population data
 pop_2000=read_excel("Data/Raw/pop_2000_2010.xls")
 #selecting necessary rows and columns
