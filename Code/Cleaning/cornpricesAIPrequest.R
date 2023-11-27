@@ -1,7 +1,7 @@
 library(tidyverse)
 
 #Pull corn prices from NASS
-Sys.setenv(nass_key = "4B2007F7-A80E-383E-9A81-5838343AB544")
+Sys.setenv(nass_key = "insert NASS key")
 
 url = "https://quickstats.nass.usda.gov/"
 endpoint = "api/api_GET/"
