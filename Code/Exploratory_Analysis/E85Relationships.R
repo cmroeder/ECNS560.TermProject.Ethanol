@@ -7,7 +7,7 @@ library(patchwork)
 #setwd
 
 #import data set
-mega = read.csv("Data/Merging/merge_final.csv")
+mega = read.csv("Data/Merging/merge_last.csv")
 
 mega_sum = mega |> 
   mutate(total_leg = incentives + tax_incentives + grant_incentives + other_incentives + regulations)
@@ -44,8 +44,8 @@ ethprodbar
 
 #use patchwork to compile barcharts into one plot
 drivers = ((e85bar|legbar)/(cornprodbar|ethprodbar)) +
-  plot_annotation(tag_levels = "A", title = "Visualizing Relationship between Count of E85 Stations and Variables of Interest")
+  plot_annotation(tag_levels = "A", title = "Relationship Between E85 Stations and Variables of Interest")
 drivers
 
 #save plot
-ggsave("Outputs/Exploratory_Analysis/E85Relationships.png", drivers, "png")
+ggsave("Outputs/Exploratory_Analysis/E85Relationships_edited.png", drivers, "png")
