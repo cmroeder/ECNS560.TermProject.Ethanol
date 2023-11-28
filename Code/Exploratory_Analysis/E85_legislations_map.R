@@ -26,16 +26,16 @@ us_map <- map_data("state")
 # Merge your data frame with map data
 merged_data <- merge(us_map, df, by.x = "region", by.y = "state", all.x = TRUE)
 
-#getting data for each state center to put dots there
-state_centers=read_csv("Data/Cleaning/state_centers.csv")
-state_centers = state_centers|>
-  mutate(state=str_to_lower(state))
-#merging data to get enacted laws, e85 and locations together
-merged_data1 <- merge(us_map, df, by.x = "region", by.y = "state", all.x = TRUE)
-dot_data<- merge(df, state_centers, by = "state")
-dot_data=dot_data|>
-  filter(state!="alaska") |>
-  filter(state!="hawaii")
+# #getting data for each state center to put dots there
+# state_centers=read_csv("Data/Cleaning/state_centers.csv")
+# state_centers = state_centers|>
+#   mutate(state=str_to_lower(state))
+# #merging data to get enacted laws, e85 and locations together
+# merged_data1 <- merge(us_map, df, by.x = "region", by.y = "state", all.x = TRUE)
+# dot_data<- merge(df, state_centers, by = "state")
+# dot_data=dot_data|>
+#   filter(state!="alaska") |>
+#   filter(state!="hawaii")
 
 #MAP with dots 
 map_plot2=ggplot() +

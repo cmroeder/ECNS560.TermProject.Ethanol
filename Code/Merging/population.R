@@ -77,5 +77,8 @@ merge_final=left_join(merge_final, pop_2020_long, by=c("state", "year"))
 merge_final <- merge_final %>%
   mutate(population = coalesce(population, population.x, population.y)) %>%
   select(-population.x, -population.y)
+#deleting 2022
+merge_final = merge_final |>
+  filter(year!=2022)
 #SAVING
 write.csv(merge_final, "Data/Merging/merge_last.csv")
