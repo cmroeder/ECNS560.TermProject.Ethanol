@@ -24,37 +24,44 @@ df=merge(df, df1, by="state")
 us_map <- map_data("state")
 # Merge your data frame with map data
 merged_data <- merge(us_map, df, by.x = "region", by.y = "state", all.x = TRUE)
-#Map1 - E85 - 2021
+
+# Map 1 - E85 - 2021
 map_e85 <- ggplot(merged_data, aes(x = long, y = lat, fill = e85)) +
   geom_map(map = merged_data, aes(map_id = region), color = "black") +
   scale_fill_gradient(low = "lightblue", high = "darkblue", na.value = "white", guide = "legend", limits = c(0, max(merged_data$e85, na.rm = TRUE))) +
-  labs(fill = "E85 stations (2021)") +
+  labs(fill = "# E85 stations") +
   ggtitle("Number of E85 Stations - 2021") +
-  theme_void()+
-  theme(plot.title = element_text(size = 10, margin = margin(5, 0, 0, 0))) +
+  theme_void() +
+  theme(plot.title = element_text(size = 10, margin = margin(5, 0, 0, 0)),
+        legend.position = "bottom",
+        legend.direction = "vertical" ) +
   coord_fixed(ratio = 1.3)
-map_e85
-#Map 2
-map_laws= ggplot(merged_data, aes(x = long, y = lat, fill = total_laws_enacted)) +
+
+# Map 2
+map_laws <- ggplot(merged_data, aes(x = long, y = lat, fill = total_laws_enacted)) +
   geom_map(map = merged_data, aes(map_id = region), color = "black") +
   scale_fill_gradient(low = "white", high = "green", na.value = "white", guide = "legend", limits = c(0, max(merged_data$total_laws_enacted, na.rm = TRUE))) +
-  labs(fill = "Total laws enacted (2021)") +
+  labs(fill = "# laws enacted") +
   ggtitle("Number of total laws enacted - 2021") +
-  theme_void()+
-  theme(plot.title = element_text(size = 10, margin = margin(5, 0, 0, 0))) +
+  theme_void() +
+  theme(plot.title = element_text(size = 10, margin = margin(5, 0, 0, 0)),
+        legend.position = "bottom",
+        legend.direction = "vertical") +
   coord_fixed(ratio = 1.3)
-map_laws
-#Map 3
-map_ethanol= ggplot(merged_data, aes(x = long, y = lat, fill = eth.production)) +
+
+# Map 3
+map_ethanol <- ggplot(merged_data, aes(x = long, y = lat, fill = eth.production)) +
   geom_map(map = merged_data, aes(map_id = region), color = "black") +
   scale_fill_gradient(low = "white", high = "purple", na.value = "white", guide = "legend", limits = c(0, max(merged_data$eth.production, na.rm = TRUE))) +
-  labs(fill = "Total ethanol production (2021)") +
-  ggtitle("Total ethanol production (thousands of barrels) - 2021") +
-  theme_void()+
-  theme(plot.title = element_text(size = 10, margin = margin(5, 0, 0, 0))) +
+  labs(fill = "Ethanol production (k barrels)") +
+  ggtitle("Total ethanol production - 2021") +
+  theme_void() +
+  theme(plot.title = element_text(size = 10, margin = margin(5, 0, 0, 0)),
+        legend.position = "bottom",
+        legend.direction = "vertical") +
   coord_fixed(ratio = 1.3)
-map_ethanol
-#combining maps
+
+# Combining maps
 library(cowplot)
 combined_maps <- plot_grid(
   map_e85 + theme(legend.position = "bottom"),
@@ -63,6 +70,9 @@ combined_maps <- plot_grid(
   nrow = 1,
   align = "h",
   axis = "b"
-) + theme(legend.position = "bottom")
-#saving
+)
 ggsave("Outputs/Exploratory_Analysis/e85_legislations_ethanol_map.png", combined_maps, width = 8, height = 6, units = "in", dpi = 300)
+
+
+
+
