@@ -6,7 +6,7 @@ library(readr)
 #setwd
 
 #import data set
-mega = read.csv("Data/Merging/merge_final.csv")
+mega = read.csv("Data/Merging/merge_last.csv")
 
 #make mega data into long format
 table(mega$state)
@@ -55,4 +55,4 @@ stacked = long |>
 stacked
 
 #save plot
-ggsave("Outputs/Exploratory_Analysis/StackedTotalLeg.png", stacked, "png")
+ggsave("Outputs/Exploratory_Analysis/StackedTotalLeg_edited.png", stacked, "png")
