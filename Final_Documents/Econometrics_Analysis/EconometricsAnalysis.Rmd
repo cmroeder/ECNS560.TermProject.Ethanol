@@ -3,8 +3,8 @@ title: "Final Exploratory Analysis"
 author: "Caroline Roeder and Indira Aitkulova"
 date: "2023-11-27"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -143,29 +143,71 @@ From the second and the third maps, we do not see a clear relationship between t
 Through this graphic, we are able to identify that the total number of E85 gas stations in the United States increased following significant increases in the number of active state-level legislation in the United States. We can see that corn production does not vary significantly (ethanol related legislation is likely not affecting the amount of corn produced), but ethanol production does increase as active ethanol related legislation increases. Ethanol related legislation is associated with increases in ethanol production and E85 demand implying that legislation helped bolster the market for ethanol.
 
 ### Econometric Analysis
-### Descriptive regression analysis, as a first step toward causal inference
-### Predictive analysis
-## Motivation
+### Motivation
 We use predictive analysis to select covariates to estimate causal effects in the future. Further research focused on understanding causal relationship between number of E85 stations and state-level laws could benefit from predictive analysis to solve the problems of selecting control variables and deciding on functional form of controls.
 
-## Methods 
+### Methods 
+## Predictive analysis
+For selecting covariates, we use Lasso regression model. The rationale behind opting for Lasso lies in its inherent ability to assign certain coefficients to zero. This feature proves advantageous as it facilitates the selection of relevant features for subsequent research.
 
-For selecting covariates, we use Lasso regression model. Before training the model, we 
+For predictive analysis, the target of prediction is number of E85 stations and other variables serve as predictors. The predictor variables were transformed the following way:
+
+- Dummy variables were created for the "year" variable.
+
+- The variables "total_stations" and "population" were log transformed due to their initial distribution
+
+- All variables were normalized.
+
+- Interaction variables between all predictors were created.
+
+- Predictors with next-to zero variation and 0.9 correlation were removed.
+
+Th model was trained on 80% of the data set. To address the fact that we are working with panel data, group_initial_split command was used to split the data. The tuning parameter is $\lambda$ which is the shrinkage parameter. A larger value of $\lambda$ results in stronger regularization, leading to more coefficients being pushed towards zero. On the other hand, a smaller value of $\lambda$ reduces the strength of regularization, allowing the model to fit the training data more closely. Overall, the value of $\lambda$ determines the regularization scale to prevent the model from overfitting by penalizing large coefficient values. For the tuning process in the model, we used five-fold cross validation accounting for the dependence of all observations for each state. This was done using the group_vfold_cv() command from rsample. 
+
+
+### Results
+## Predictive analysis
+We report the results for the best performing Lasso model. To determine the best performing model, we use using root mean squared error (RMSE) which we opt for not only due to its prevalence as a common metric but also because of its ease of interpretation. The best-performing model gains RMSE of 139 on the test set with the penalty of 1.87. The metrics is not particularly impressive but it is important to reiterate that the purpose of our predicting analysis is in selecting relevant features rather than obtaining the most accurate prediction model. The predicted vs actual values are presented in the plot below. We see that the model does best in predicting values of E85 stations larger than 0 due to large variations in predictors for observations with zero E85 stations. 
+![](images/predicted_actual.png){style="display: block; margin: 1em auto" width="600"}
+The main finding of our predictive analysis is the set of variables with predictive power. Out of 208 predictors, the lasso model identified 18 predictors with non-zero coefficients. We subdivide non-zero coefficients into the three groups: primary variables, interaction terms with primary variables and interaction terms with year dummy variables. We believe that the first two groups would be the most beneficial for covariates selection in the further causal inference studies.
+
 **Non-zero coefficients: primary variables**
 
-**Non-zero coefficients: primary variables**
-
-| Term            |   Estimate    |  Penalty   |
-|:---------------:|:-------------:|:----------:|
-| corn.production | 39.26098654   |  1.876175  |
-| population      | 18.90899353   |  1.876175  |
-| total_stations  | 15.49756535   |  1.876175  |
-| eth.production  |  7.42780665   |  1.876175  |
-| regulations     |  3.60694128   |  1.876175  |
+| Term             |   Estimate    |  Penalty   |
+|:----------------:|:-------------:|:----------:|
+| corn.production  | 39.26098654   |  1.876175  |
+| population       | 18.90899353   |  1.876175  |
+| total_stations   | 15.49756535   |  1.876175  |
+| eth.production   |  7.42780665   |  1.876175  |
+| regulations      |  3.60694128   |  1.876175  |
 
 
+**Non-zero coefficients: interaction terms with primary variables**
 
-## Results
+| Term             |  Estimate      |  Penalty   |
+|:----------------:|:--------------:|:----------:|
+| eth.production_x_population | 32.4325463   | 1.876175  |
+| total_stations_x_corn.production | 15.33489842 | 1.876175  |
+| regulations_x_corn.production | 6.74409047   | 1.876175  |
+| total_stations_x_population | 4.97338697   | 1.876175  |
+
+
+**Non-zero coefficients: interaction terms with year dummy variables**
+
+| Term             |  Estimate      |  Penalty   |
+|:----------------:|:--------------:|:----------:|
+| population_x_year_X2021 | 9.84841767   | 1.876175  |
+| population_x_year_X2020 | 8.60993215   | 1.876175  |
+| total_stations_x_year_X2021 | 7.84033431   | 1.876175  |
+| population_x_year_X2019 | 5.97738847   | 1.876175  |
+| grant_incentives_x_year_X2019 | 5.01497532   | 1.876175  |
+| population_x_year_X2018 | 3.25035857   | 1.876175  |
+| total_stations_x_year_X2020 | 2.84301975   | 1.876175  |
+| eth.production_x_year_X2012 | 0.2850217   | 1.876175  |
+| eth.production_x_year_X2018 | 0.06314095   | 1.876175  |
+
+
+From the table above, we can answer our research question "Are state-level laws and ethanol production good predictors of ethanol demand?." We conclude that ethanol production and state-level regulations are good predictors of the number of E85 stations and one should use them in further causal inference analysis. It is interesting to note that only the overall number of legislations is a good predictor without exact specification of legislations' nature. 
 
 
 

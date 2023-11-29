@@ -63,8 +63,11 @@ final_lasso =
 final_lasso
 #graph
 autoplot(lasso_cv, metric="rmse")
-#looking at coefficients
+
+#on test data
 final_fit_lasso = final_lasso |> fit(data=e85_train) |> last_fit(split=e85_split)
+metrics= final_fit_lasso |> collect_metrics()
+#looking at coefficients
 coefs = final_fit_lasso |>
   extract_fit_parsnip() |>
   tidy()
@@ -87,7 +90,7 @@ plot1=ggplot(data=predicted_values, aes(x = actuals, y = .pred)) +
        x = "Actual #E85 stations",
        y = "Predicted #E85 stations") +
   theme_minimal()
-ggsave("Outputs/Econometrics_Analysis/predicted_actual.png", plot1, width = 8, height = 6, units = "in", dpi = 300)
+ggsave("Outputs/Econometric_Analysis/predicted_actual.png", plot1, width = 8, height = 6, units = "in", dpi = 300)
 #saving non-zero coefs
 library(openxlsx)
-write.xlsx(coefs_nonzero, file = "Outputs/Econometrics_Analysis/coefs_nonzero.xlsx", rowNames = FALSE)
+write.xlsx(coefs_nonzero, file = "Outputs/Econometric_Analysis/coefs_nonzero.xlsx", rowNames = FALSE)
