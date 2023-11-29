@@ -3,6 +3,7 @@
 library(pacman)
 p_load(tidyverse, tidymodels, skimr, glmnet, kknn)
 library(tidymodels)
+library(openxlsx)
 
 # Data
 merge_final <- read.csv("Data/Merging/merge_last.csv")
@@ -79,10 +80,14 @@ predicted_values <- predict(lasso_fit, new_data = e85_test)
 # Plotting predicted vs actual values
 library(ggplot2)
 predicted_values$actuals=e85_test$e85
-ggplot(data=predicted_values, aes(x = actuals, y = .pred)) +
+plot1=ggplot(data=predicted_values, aes(x = actuals, y = .pred)) +
   geom_point() +
   geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
   labs(title = "Predicted vs Actual Values",
        x = "Actual #E85 stations",
        y = "Predicted #E85 stations") +
   theme_minimal()
+ggsave("Outputs/Econometrics_Analysis/predicted_actual.png", plot1, width = 8, height = 6, units = "in", dpi = 300)
+#saving non-zero coefs
+library(openxlsx)
+write.xlsx(coefs_nonzero, file = "Outputs/Econometrics_Analysis/coefs_nonzero.xlsx", rowNames = FALSE)
